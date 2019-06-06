@@ -36,10 +36,6 @@ export default class Auth extends Component {
                         }}
 
                     />
-
-
-
-
                     <ButtonBranco nome='Autenticar' action={this.validarCnpj} />
                 </View>
             }>
