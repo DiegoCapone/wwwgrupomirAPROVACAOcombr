@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "35025332939",
+    "firebase_url": "https://appaprovacao-96eac.firebaseio.com",
+    "project_id": "appaprovacao-96eac",
+    "storage_bucket": "appaprovacao-96eac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35025332939:android:1847cb2d5fee38a2",
+        "android_client_info": {
+          "package_name": "com.wwwgrupomiraprovacaocombr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35025332939-pg0mmelpp6kk0l7gsl1dnb1busd47bod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt2we5HQX6KIivdei4C1Lvc47xVdkIPe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35025332939-pg0mmelpp6kk0l7gsl1dnb1busd47bod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
