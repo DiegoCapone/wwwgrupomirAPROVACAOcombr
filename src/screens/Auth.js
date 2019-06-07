@@ -15,10 +15,11 @@ export default class Auth extends Component {
     }
 
     validarCnpj = () => {
-        const num = this.state.cnpj
-        // cnpj.isValid(num);
-        // cnpj.format(num);
-        Alert.alert(num.length)
+        // const num = this.state.cnpj
+        // // cnpj.isValid(num);
+        // // cnpj.format(num);
+        // Alert.alert(num.length)
+        this.props.navigation.navigate('Login')
 
     }
 

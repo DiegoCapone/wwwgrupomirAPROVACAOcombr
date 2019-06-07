@@ -17,6 +17,7 @@ export default class Login extends Component {
 
     Login = () => {
         console.log('teste')
+        this.props.navigation.navigate('DashBoard')
     }
 
     render() {
