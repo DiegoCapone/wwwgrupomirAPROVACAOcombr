@@ -6,12 +6,13 @@ import { Transition } from 'react-native-reanimated';
 import Auth from '../screens/Auth'
 import Login from '../screens/Login'
 import DashBoard from '../screens/DashBoard'
+import MenuNavigator from './DrawerNavigator'
 
 const MySwitch = createAnimatedSwitchNavigator(
     {
         Auth: Auth,
         Login: Login,
-        DashBoard: DashBoard
+        DashBoard: MenuNavigator
     },
     {
         transition: (

@@ -3,10 +3,13 @@ import { View, Text, StyleSheet, Alert } from 'react-native';
 import Backgorund from '../components/LinearGradient'
 import AuthInput from '../components/AuthIput'
 import ButtonBranco from '../components/ButtonBranco'
+import { connect } from 'react-redux'
+import { getURL } from '../store/action/getUrl'
+import db from 'react-native-firebase'
 
 
 
-export default class Auth extends Component {
+class Auth extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,12 +18,26 @@ export default class Auth extends Component {
     }
 
     validarCnpj = () => {
-        // const num = this.state.cnpj
-        // // cnpj.isValid(num);
-        // // cnpj.format(num);
-        // Alert.alert(num.length)
-        this.props.navigation.navigate('Login')
+        let cnpj = this.state.cnpj.split('.').join('').split('/').join('')
+        cnpj = cnpj.split('-').join('')
 
+        db.firestore().collection('url').doc(cnpj)
+            .get().then((doc) => {
+                const url = doc.data().url
+                console.log(url)
+                if (doc.data()) {
+                    this.props.onUrl({ url })
+                    this.props.navigation.navigate('Login')
+                } else {
+                    Alert.alert('Erro de Autenticação')
+                }
+            })
+            .catch(function (e) {
+                Alert.alert('Erro de conexão' + e.message)
+                console.log(e)
+            });
+
+        // this.props.navigation.navigate('Login')
     }
 
     render() {
@@ -54,3 +71,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
 });
+
+
+
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onUrl: url => dispatch(getURL(url))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Auth)

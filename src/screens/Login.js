@@ -3,9 +3,11 @@ import { View, StyleSheet } from 'react-native';
 import Backgorund from '../components/LinearGradient'
 import AuthInput from '../components/AuthIput'
 import ButtonBranco from '../components/ButtonBranco'
+import { connect } from 'react-redux'
+import { getUser } from '../store/action/getUser'
 
 
-export default class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,6 +19,7 @@ export default class Login extends Component {
 
     Login = () => {
         console.log('teste')
+        this.props.onUser({ user: this.state.login })
         this.props.navigation.navigate('DashBoard')
     }
 
@@ -68,3 +71,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
 });
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onUser: user => dispatch(getUser(user))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login)

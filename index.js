@@ -1,9 +1,16 @@
-
+import React from 'react'
 import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
-import Auth from './src/screens/Auth'
-import Login from './src/screens/Login'
 import Navigator from './src/Navigation/SwitchNavigator'
-import DashBoard from './src/screens/DashBoard'
+import { Provider } from 'react-redux'
+import storeConfig from './src/store/StoreConfig'
 
-AppRegistry.registerComponent(appName, () => Navigator);
+
+const store = storeConfig()
+const Redux = () => (
+    <Provider store={store}>
+        <Navigator />
+    </Provider>
+)
+
+AppRegistry.registerComponent(appName, () => Redux);

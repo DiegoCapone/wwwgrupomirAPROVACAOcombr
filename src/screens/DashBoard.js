@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import { SideBar, SideBarAction } from '../components/SideBar'
 import Solicitacao from '../components/Solicitacao';
 import { IsFlag, NoFlag } from '../components/Flag';
+import { connect } from 'react-redux'
 
-export default class DashBoard extends Component {
+class DashBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,6 +30,8 @@ export default class DashBoard extends Component {
     flagged = () => {
         this.setState({ flagged: !this.state.flagged })
         this.modoEdit()
+        console.log(this.props.url)
+        console.log(this.props.user)
     }
 
 
@@ -36,10 +39,28 @@ export default class DashBoard extends Component {
         const flag = this.state.flagged ? <NoFlag /> : <IsFlag />
         return (
 
-            <View>
+            <View style={styles.container}>
                 {!this.state.edit ? <SideBar logout={this.logout} /> : <SideBarAction modeOff={this.modoEditOff} />}
                 <Solicitacao flagged={this.flagged} flag={flag} />
             </View>
         );
     }
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: '#FFF',
+        flex: 1,
+    }
+})
+
+const mapStateToProps = ({ url, user }) => {
+    return {
+        url: url.url,
+        user: user.user
+    }
+}
+
+
+export default connect(mapStateToProps, null)(DashBoard)
